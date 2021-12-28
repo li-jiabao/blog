@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Blog - FlexStart Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/assets/img/favicon.png" rel="icon">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container container-fluid container-xl d-flex align-items-center justify-content-between">
+
+        <a href="index.html" class="logo d-flex align-items-center">
+            <img src="/assets/img/logo.png" alt="">
+            <span>Jiabao's Blog</span>
+        </a>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto " href="/index.html">主页</a></li>
+                <li><a class="active" href="/blog">博客</a></li>
+                <li><a class="nav-link scrollto" href="/category">文章分类</a></li>
+                <li><a class="nav-link scrollto" href="/tag">文章标签</a></li>
+                <li><a class="nav-link scrollto" href="/archive">文章归档</a></li>
+                <li><a class="nav-link scrollto" href="/editor">写文章</a></li>
+                <li>
+                    <form data-v-cafea3d4="" role="search" class="search-form">
+                        <input data-v-cafea3d4="" type="search" maxlength="32" placeholder="探索稀土掘金" class="search-input">
+                        <img data-v-cafea3d4="" src="//lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/8f68a2223e9650f14d6e6781cdcd717a.svg" alt="搜索" class="search-icon">
+                        <div data-v-cafea3d4="" class="typehead" style="display: none;">
+                            <div data-v-cafea3d4="" class="title">
+                                <span data-v-cafea3d4="">搜索历史</span>
+                                <span data-v-cafea3d4="" class="clear">清空</span>
+                            </div>
+                            <div data-v-cafea3d4="" class="list"></div>
+                        </div>
+                    </form>
+                </li>
+                <li><a class="nav-link scrollto" href="/about.html">关于</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+    </div>
+
+    <!--  &lt;!&ndash; ======= Breadcrumbs ======= &ndash;&gt;-->
+    <!--  <section class="breadcrumbs">-->
+    <!--    <div class="container">-->
+
+    <!--      <ol>-->
+    <!--        <li><a href="index.html">Home</a></li>-->
+    <!--        <li>Blog</li>-->
+    <!--        <li style="align:right"><input type="text"/><a href="#">搜索文章</a></li>-->
+    <!--      </ol>-->
+
+    <!--    </div>-->
+    <!--  </section>&lt;!&ndash; End Breadcrumbs &ndash;&gt;-->
+</header><!-- End Header -->
+
+<main id="main" class="container">
+
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+
+        <div class="entries">
+
+            <article class="entry" th:each="article:${page.list}">
+
+                <!--              <div class="entry-img">-->
+                <!--                <img th:src="${#strings.isEmpty(article.articleImg)?'assets/img/blog/blog-1.jpg':article.articleImg}" alt="" class="img-fluid">-->
+                <!--              </div>-->
+
+                <h2 class="entry-title">
+                    <a th:href="'/blog/'+${article.bodyId}+'.html'" th:text="${article.title}"></a>
+                </h2>
+
+                <div class="entry-meta">
+                    <ul>
+                        <li class="d-flex align-items-center">
+                            <i class="bi bi-person"></i>
+                            <a th:href="'/blog/'+${article.bodyId}+'.html'">[[${article.authorName}]]</a>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class="bi bi-clock"></i>
+                            <a th:href="'/blog/'+${article.bodyId}+'.html'">
+                                <span th:text="${#dates.format(article.createDate, 'yyyy-MM-dd')}">4564546</span>
+                            </a>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class="bi bi-chat-dots"></i>
+                            <a th:href="'/blog/'+${article.bodyId}+'.html'">12 Comments</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="entry-summary">
+                    <p th:text="${article.summary}">
+
+                    </p>
+                    <div class="read-more">
+                        <a th:href="'/blog/'+${article.bodyId}+'.html'">Read More</a>
+                    </div>
+                </div>
+
+            </article><!-- End blog entry -->
+
+            <div class="blog-pagination">
+                <ul class="justify-content-center">
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                </ul>
+            </div>
+
+        </div><!-- End blog entries list -->
+
+    </section><!-- End Blog Section -->
+
+</main><!-- End #main -->
+
+<footer id="footer" class="footer">
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/php-email-form/validate.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>
